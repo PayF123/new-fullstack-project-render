@@ -11,7 +11,7 @@ services:
         value: "18.0.0"
 
   # Frontend (React Static Site)
-  - type: static_site
+  - type: static
     name: client
     rootDir: client
     buildCommand: "npm install && npm run build"
