@@ -1,0 +1,24 @@
+services:
+  # Backend (Node.js Express Server)
+  - type: web
+    name: server
+    runtime: node
+    rootDir: server
+    buildCommand: "npm install"
+    startCommand: "node index.js"
+    envVars:
+      - key: NODE_VERSION
+        value: "18.0.0"
+
+  # Frontend (React Static Site)
+  - type: static_site
+    name: client
+    rootDir: client
+    buildCommand: "npm install && npm run build"
+    publishPath: "dist" # The output directory for Vite
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: server
+          property: url # Injects the backend URL
