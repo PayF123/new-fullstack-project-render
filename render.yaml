@@ -22,4 +22,4 @@ services:
         fromService:
           type: web
           name: server
-          property: url # Injects the backend URL
+          property: host # Injects the backend hostname
